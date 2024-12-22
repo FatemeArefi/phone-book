@@ -45,42 +45,45 @@ const Phonebook = () => {
 
   return (
     <div className="container">
-      <h2>دفترچه تلفن</h2>
-      <form onSubmit={submitHandler}>
-        <div className="form-group">
-          {" "}
-          نام:
+      <h1>دفترچه تلفن</h1>
+      <form onSubmit={submitHandler} className="mb-4">
+        <div className="form-group text-center">
+          <label htmlFor="form-control">نام:</label>
           <input
             type="text"
             className="form-control"
+            id="form-control"
             placeholder="نام را وارد کنید"
-            value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
-        <div className="form-group">
-          شماره تلفن:
+        <div className="form-group text-center">
+          <label htmlFor="phone">شماره تلفن:</label>
           <input
             type="number"
             className="form-control"
+            id="phone"
             placeholder="شماره تلفن را وارد کنید"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => setPhone(e.target.value)} // اصلاح این خط
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          {editIndex !== null ? "ویرایش" : "اضافه کردن"}
-        </button>
+        <div className="text-center">
+          <button type="submit" className="btn btn-primary">
+            {editIndex !== null ? "ویرایش" : "اضافه کردن"}
+          </button>
+        </div>
       </form>
-      <ul className="list-group mt={3}">
+
+      <hr />
+      <ul className="list-group">
         {contacts.map((contact, index) => (
           <li
             key={index}
             className="list-group-item d-flex justify-content-between align-items-center"
           >
-            <CheckTwoToneIcon />
+            <CheckTwoToneIcon style={{ color: "green" }} />
             {contact.name} - {contact.phone}
             <div>
               <button
